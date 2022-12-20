@@ -1,6 +1,9 @@
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Phonebook {
+    public static HashMap<String, Integer> map = new HashMap<>();
+
     public static void main(String[] args) {
 
 
@@ -26,7 +29,19 @@ public class Phonebook {
         phonebook.put("Кудрявцева Анна", "88002000600");
         phonebook.put("Петрова Ольга", "88002000600");
 
-        System.out.println(phonebook.keySet());
+        System.out.println("Телефонная книга: " + phonebook);
+
+
+        addMap("str1", 123);
+        addMap("str1", 122);
+        System.out.println(map);
+
+
     }
 
+    public static void addMap(String str, Integer number) {
+         if (Objects.equals(map.put(str, number), number)) {
+            throw new RuntimeException("Такое значения уже есть");
+        }
+    }
 }
